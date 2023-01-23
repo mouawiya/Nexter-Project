@@ -1,4 +1,29 @@
 .features{
-    background-color: $color-grey-light-2;
     grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+    display: grid;
+    //grid-template-columns: repeat(3, 1fr); we can't use this because when we lower the size of the page it will not be responsive
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // this will make the features of two grids when we lower the size of the page, and 1 column grid when we lower it even more
+    grid-gap: 6rem;
+    align-items: start;
+}
+
+.feature{
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+    &__icon {
+        fill: $color-primary; // change the color of the svg icons
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; // we couldn't put "-1" because it only works with an explicit grid, but we have an implicit grid since we didn't define the row
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
 }
