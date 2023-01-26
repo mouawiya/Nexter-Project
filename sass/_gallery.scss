@@ -5,6 +5,13 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(7, 5vw);
+    /*we can also write the previous lines as: 
+    
+    grid-template: repeat(7,5vw) / repeat(8, 1fr);
+    
+    */
+
+
     grid-gap: 1.5rem;
     padding: 1.5rem; // to add some space around the entire gallery
 
