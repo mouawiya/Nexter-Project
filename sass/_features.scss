@@ -3,18 +3,33 @@
 
     margin: 15rem 0;
 
-    display: grid;
-    //grid-template-columns: repeat(3, 1fr); we can't use this because when we lower the size of the page it will not be responsive
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // this will make the features of two grids when we lower the size of the page, and 1 column grid when we lower it even more
-    grid-gap: 6rem;
-    align-items: start;
+    // test if the browser supports display: grid to activate the following code, else active the top code in .feature below
+    @supports(display: grid){
+        display: grid;
+        //grid-template-columns: repeat(3, 1fr); we can't use this because when we lower the size of the page it will not be responsive
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // this will make the features of two grids when we lower the size of the page, and 1 column grid when we lower it even more
+        grid-gap: 6rem;
+        align-items: start;
+    }
 }
 
 .feature{
+
+    float: left;
+    width: 33.3333333%;
+    margin-bottom: 6rem;
+
+    // test if the browser supports display: grid to activate the following code
+    @supports(display: grid){
+        width: auto;
+        margin-bottom: 0;
+    }
+
     display: grid;
     grid-template-columns: min-content 1fr;
     grid-row-gap: 1.5rem;
     grid-column-gap: 2.5rem;
+
     &__icon {
         fill: $color-primary; // change the color of the svg icons
         width: 4.5rem;
