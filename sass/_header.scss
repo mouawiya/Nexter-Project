@@ -8,10 +8,20 @@
     padding-top: 4rem;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content); // the column should never be more narrow than the content 
     grid-row-gap: 1.5rem;
     justify-content: center;
+
+    // make the header over the entire width of the page
+    @media only screen and (max-width: $bp-medium){
+       grid-column: 1/-1; 
+    }
+
+    // change the padding for small screens
+    @media only screen and (max-width: $bp-small){
+        padding: 5rem;
+     }
 
     &__logo{
         height: 3rem;
@@ -48,9 +58,11 @@
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 3rem;
         justify-items: center;
+        align-items: center;
 
         img{
-            height: 2.5rem;
+            max-height: 2.5rem; // the height can be 2.5rem but can also be less than that
+            max-width: 100%;
             filter: brightness(70%);
         }
     }

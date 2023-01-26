@@ -8,12 +8,27 @@
     justify-items: center;
     grid-row-gap: 2rem;
 
+    // make the realtors section over the entire width of the page
+    @media only screen and (max-width: $bp-medium){
+        grid-column: 1/-1; 
+    }
+
     &__list {
         display: grid;
         grid-template-columns: min-content max-content;
         grid-column-gap: 2rem;
         grid-row-gap: 5vh; // in order to make the space change when we change the height of the viewport
         align-items: center;
+
+        // make the realtors on the sme line
+        @media only screen and (max-width: $bp-medium){
+            grid-template-columns: repeat(3, min-content max-content); // min-content is for the image and max-content is for the text
+        }
+
+        // put the realtors one under another
+        @media only screen and (max-width: $bp-small){
+            grid-template-columns: min-content max-content;
+        }
     }
 
     &__img {

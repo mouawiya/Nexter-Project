@@ -3,6 +3,14 @@
     grid-column: sidebar-start / sidebar-end;
     grid-row: 1 / -1;
 
+    // placing he sidebar on the top of the page when using screens with 1000px or less
+    @media only screen and (max-width: $bp-large){
+       grid-column: 1/-1;
+       grid-row: 1/2;
+       justify-content: flex-end;
+       align-items: center;
+    }
+
     // use flexbox to align the button
     display: flex;
     justify-content: center; // align the items (the button in this case) along the main axis
@@ -29,4 +37,12 @@
 
     &::before{transform: translateY(-1.5rem);} // the first line of the button
     &::after{transform: translateY(1.3rem);}    // the second line of the button
+
+    // modify the position of the button and its styling 
+    @media only screen and (max-width: $bp-large){
+        margin-top: 0;
+        margin-right: 3rem;
+        &::before{transform: translateY(-1.2rem);} // the first line of the button
+        &::after{transform: translateY(1rem);}    // the second line of the button
+     }
 }

@@ -14,6 +14,12 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// Responsive Breakpoints
+$bp-largest: 75em; // (1200px) 1200/16 =75
+$bp-large: 62.5em; // (1000px) 1000/16 = 62.5
+$bp-medium: 50em;  // (800px) 800/16 = 50
+$bp-small: 37.5em; // (600px) 600/16 = 37.5
+
 *,
 *::before,
 *::after{
@@ -25,6 +31,10 @@ $font-display: 'Josefin Sans', sans-serif;
 html{
     box-sizing: border-box;
     font-size: 62.5%; // 10px/16px = 62.5% ->1rem=10px
+
+    @media only screen and (max-width: $bp-largest){
+        font-size: 50%;
+    }
 }
 
 body {
@@ -47,4 +57,16 @@ body {
     the first 8rem is for the sidebar, the minmax(6rem, 1fr) is for the empty space that will be left out of the 8 spaces
     the repeat(8,...) is for the 8columns and the minmax() inside it is to fix their sizes to minimum that takes the minimum content and maximum that takes 14rem =140px
     */
+
+    // changing the grid to make the side bar at the top of the page
+    @media only screen and (max-width: $bp-large){
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+        grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    // change the grid definition by adding a new raw to make the realtors place under the header
+    @media only screen and (max-width: $bp-medium){
+        grid-template-rows: 6rem calc(100vh - 6rem);
+        // using the calc function to remove the 6rem of the sidebar on the top of the page
+    }
 }
